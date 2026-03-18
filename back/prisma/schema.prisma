@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  student
+  counsellor
+}
+
+enum AppointmentStatus {
+  scheduled
+  completed
+  cancelled
+}
+
+enum MoodValue {
+  calm
+  happy
+  anxious
+  sad
+  frustrated
+  numb
+}
+
+model User {
+  id           String        @id @default(cuid())
+  username     String        @unique
+  mobileNo     String        @unique
+  college      String
+  password     String
+  role         Role          @default(student)
+  bio          String?
+  avatarUrl    String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  appointments Appointment[]
+  moodLogs     MoodLog[]
+  dassResults  DassResult[]
+}
+
+model Appointment {
+  id          String            @id @default(cuid())
+  userId      String
+  user        User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  phoneNumber String
+  name        String?
+  email       String?
+  date        DateTime
+  time        String
+  details     String?
+  status      AppointmentStatus @default(scheduled)
+  resolvedAt  DateTime?
+  resolvedBy  String?
+  cancelNote  String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  @@index([status])
+  @@index([date])
+  @@index([userId])
+}
+
+model MoodLog {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mood      MoodValue
+  note      String?
+  loggedAt  DateTime  @default(now())
+
+  @@index([userId])
+  @@index([loggedAt])
+}
+
+model DassResult {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  depressionRaw  Int
+  anxietyRaw     Int
+  stressRaw      Int
+
+  depressionScore Int
+  anxietyScore    Int
+  stressScore     Int
+
+  depressionSeverity String
+  anxietySeverity    String
+  stressSeverity     String
+
+  takenAt  DateTime @default(now())
+
+  @@index([userId])
+  @@index([takenAt])
+}
