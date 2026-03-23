@@ -80,7 +80,12 @@ export const getUserResults = async (req: AuthRequest, res: Response) => {
       return res.status(403).json({ success: false, message: "Access denied. Counsellors only." });
     }
 
-    const { userId } = req.params;
+    const userIdParam = req.params.userId;
+    const userId = Array.isArray(userIdParam) ? userIdParam[0] : userIdParam;
+    if (!userId) {
+      return res.status(400).json({ success: false, message: "User ID is required." });
+    }
+
     const results = await db.dassResult.findMany({
       where: { userId },
       orderBy: { takenAt: "desc" },
