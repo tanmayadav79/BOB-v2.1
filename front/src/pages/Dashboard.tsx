@@ -43,7 +43,6 @@ export default function CounselorDashboard() {
 
   return (
     <div className='min-h-[calc(100vh-64px)] px-6 sm:px-10 py-10 relative overflow-hidden'>
-      <div className='blob-primary fixed right-[-8%] top-[5%] w-[440px] h-[440px] rounded-full opacity-25 pointer-events-none' style={{ background: 'radial-gradient(circle at 40% 40%, var(--blue-light) 0%, var(--blue-medium) 60%, transparent 80%)' }} />
       <div className='relative z-10 max-w-5xl mx-auto'>
         <span className='text-[0.7rem] font-medium tracking-[0.1em] uppercase text-[var(--rose-medium)] block mb-1'>Counsellor View</span>
         <h1 className='font-cormorant text-[clamp(2rem,3.5vw,2.8rem)] font-light text-[var(--ink)] leading-tight mb-6'>Appointments Dashboard</h1>

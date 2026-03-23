@@ -9,6 +9,7 @@ import counsellorRoutes from "./routes/counsellor";
 import profileRoutes from "./routes/profile";
 import moodRoutes from "./routes/mood";
 import dassRoutes from "./routes/dass";
+import chatRoutes from "./routes/chat";
 
 dotenv.config();
 
@@ -36,5 +37,6 @@ app.use("/counsellor", counsellorRoutes);
 app.use("/profile", profileRoutes);
 app.use("/mood", moodRoutes);
 app.use("/dass", dassRoutes);
+app.use("/chat", chatRoutes);
 
 export default app;

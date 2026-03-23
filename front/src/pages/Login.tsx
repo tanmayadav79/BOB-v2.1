@@ -30,8 +30,6 @@ const Login = () => {
 
   return (
     <div className='min-h-[calc(100vh-64px)] flex items-center justify-center px-4 py-10 relative overflow-hidden'>
-      <div className='blob-primary absolute right-[-10%] top-[10%] w-[500px] h-[500px] rounded-full opacity-30 pointer-events-none fixed' style={{background: 'radial-gradient(circle at 40% 40%, var(--blue-light) 0%, var(--blue-medium) 60%, transparent 80%)'}} />
-      <div className='blob-secondary absolute left-[-8%] bottom-[5%] w-[300px] h-[300px] rounded-full opacity-45 pointer-events-none fixed' style={{background: 'radial-gradient(circle, var(--rose-light) 0%, transparent 70%)'}} />
       <form onSubmit={handleSubmit} className='relative z-10 w-full max-w-[400px] bg-[rgba(255,255,255,0.92)] backdrop-blur-xl rounded-3xl p-8 shadow-[0_24px_60px_rgba(44,44,44,0.08)] border border-[rgba(255,167,166,0.2)] flex flex-col gap-4'>
         <div className='text-center mb-1'>
           <h2 className='font-cormorant text-[1.9rem] font-normal text-[var(--ink)] leading-tight'>{state === 'Login' ? 'Welcome back' : 'Create account'}</h2>

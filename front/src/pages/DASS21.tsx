@@ -165,20 +165,10 @@ export default function DASS21() {
 
   if (screen === 'intro') return (
     <div className='min-h-[calc(100vh-64px)] flex items-center justify-center px-4 py-12 relative overflow-hidden'>
-      <div className='blob-primary fixed right-[-8%] top-[5%] w-[500px] h-[500px] rounded-full opacity-30 pointer-events-none' style={{ background: 'radial-gradient(circle at 40% 40%, var(--blue-light) 0%, var(--blue-medium) 60%, transparent 80%)' }} />
-      <div className='blob-secondary fixed left-[-6%] bottom-[5%] w-[320px] h-[320px] rounded-full opacity-40 pointer-events-none' style={{ background: 'radial-gradient(circle, var(--rose-light) 0%, transparent 70%)' }} />
       <div className='relative z-10 w-full max-w-[540px] bg-[rgba(255,255,255,0.92)] backdrop-blur-xl rounded-3xl p-8 sm:p-10 shadow-[0_24px_60px_rgba(44,44,44,0.08)] border border-[rgba(255,167,166,0.2)]'>
         <span className='text-[0.7rem] font-medium tracking-[0.1em] uppercase text-[var(--rose-medium)] block mb-2'>Mental Wellness Assessment</span>
-        <h1 className='font-cormorant text-[clamp(2rem,4vw,2.8rem)] font-light text-[var(--ink)] leading-tight mb-3'>DASS-21 Self-Report Test</h1>
-        <p className='text-[0.9rem] text-[var(--ink-muted)] font-light leading-relaxed mb-6'>This 21-question assessment measures symptoms of <strong className='font-medium text-[var(--ink)]'>Depression</strong>, <strong className='font-medium text-[var(--ink)]'>Anxiety</strong>, and <strong className='font-medium text-[var(--ink)]'>Stress</strong> over the past week. It takes about 3–5 minutes.</p>
-        <div className='flex flex-col gap-2.5 mb-7'>
-          {[{ cat: 'd' as Category, n: 7, desc: 'Low mood, hopelessness, lack of motivation' }, { cat: 'a' as Category, n: 7, desc: 'Physical anxiety symptoms, panic, fear' }, { cat: 's' as Category, n: 7, desc: 'Tension, agitation, difficulty relaxing' }].map(c => (
-            <div key={c.cat} className='flex items-center gap-3 p-3.5 rounded-[12px] bg-[var(--rose-whisper)] border border-[rgba(255,167,166,0.12)]'>
-              <span className='text-[0.84rem] text-[var(--ink-muted)] font-light flex-1'>{c.desc}</span>
-              <span className='text-[0.72rem] text-[var(--ink-muted)] shrink-0'>{c.n} Qs</span>
-            </div>
-          ))}
-        </div>
+        <h1 className='font-cormorant text-[clamp(2rem,4vw,2.8rem)] font-light text-[var(--ink)] leading-tight mb-3'>DASS-21 Test</h1>
+        <p className='text-[0.9rem] text-[var(--ink-muted)] font-light leading-relaxed mb-6'>This test takes about 3–5 minutes. Please answer all questions to the best of your ability.</p>
         <button onClick={() => setScreen('test')} className='w-full bg-[var(--ink)] text-white text-[0.9rem] font-medium py-4 rounded-full border-none cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(44,44,44,0.2)] transition-all duration-200 flex items-center justify-center gap-2'>Start Assessment <ChevronRight size={16} /></button>
       </div>
     </div>
@@ -230,9 +220,6 @@ export default function DASS21() {
   )
   return (
     <div className='min-h-[calc(100vh-64px)] relative overflow-hidden'>
-      <div className='blob-primary fixed right-[-8%] top-[5%] w-[440px] h-[440px] rounded-full opacity-25 pointer-events-none' style={{ background: 'radial-gradient(circle at 40% 40%, var(--blue-light) 0%, var(--blue-medium) 60%, transparent 80%)' }} />
-      <div className='blob-secondary fixed left-[-5%] bottom-[8%] w-[300px] h-[300px] rounded-full opacity-35 pointer-events-none' style={{ background: 'radial-gradient(circle, var(--rose-light) 0%, transparent 70%)' }} />
-
       <div className='bg-[var(--ink)] px-6 sm:px-10 py-12 relative z-10'>
         <div className='max-w-2xl mx-auto'>
           <span className='text-[0.7rem] font-medium tracking-[0.1em] uppercase text-[var(--rose-medium)] block mb-2'>Assessment Complete</span>
@@ -257,26 +244,6 @@ export default function DASS21() {
             <a href='/appointment' className='shrink-0 bg-[var(--rose-medium)] text-white text-[0.85rem] font-medium px-6 py-3 rounded-full no-underline hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(255,167,166,0.4)] transition-all duration-200'>Book a Session</a>
           </div>
         )}
-
-        <div className='bg-white rounded-[20px] p-5 sm:p-6 border-[1.5px] border-[rgba(255,167,166,0.15)] shadow-[0_4px_20px_rgba(44,44,44,0.04)]'>
-          <span className='text-[0.68rem] font-medium tracking-[0.1em] uppercase text-[var(--rose-medium)] block mb-4'>Severity Scale Reference</span>
-          <div className='grid grid-cols-1 sm:grid-cols-3 gap-5'>
-            {(['d', 'a', 's'] as Category[]).map(c => (
-              <div key={c}>
-                <div className={`text-[0.65rem] font-medium tracking-wide uppercase px-2 py-0.5 rounded-full inline-block mb-2.5 ${CAT_BADGE[c]}`}>{CAT_LABEL[c]}</div>
-                <ul className='flex flex-col gap-1.5'>
-                  {SEVERITY[c].ranges.map(([min, label]) => (
-                    <li key={label} className='flex justify-between text-[0.78rem]'>
-                      <span className='text-[var(--ink-muted)] font-light'>{label}</span>
-                      <span className='text-[var(--ink-muted)] tabular-nums'>≥{min}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          <p className='mt-4 text-[0.72rem] text-[var(--ink-muted)] font-light leading-relaxed border-t border-[rgba(44,44,44,0.07)] pt-3'>Scores are raw subscale totals ×2, aligning DASS-21 with DASS-42 norms.</p>
-        </div>
 
         <div className='flex flex-col sm:flex-row gap-3'>
           <button onClick={handleRetake} className='flex-1 flex items-center justify-center gap-2 py-3.5 rounded-full bg-white text-[var(--ink)] text-[0.88rem] font-medium border-[1.5px] border-[rgba(44,44,44,0.14)] cursor-pointer hover:border-[var(--rose-medium)] hover:text-[var(--rose-medium)] transition-all duration-200'><RotateCcw size={14} />Retake Test</button>

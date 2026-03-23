@@ -24,7 +24,6 @@ export const Appointment = () => {
 
   return (
     <div className='min-h-[calc(100vh-64px)] flex items-start justify-center px-4 py-12 relative overflow-hidden'>
-      <div className='blob-primary fixed right-[-8%] top-[5%] w-[460px] h-[460px] rounded-full opacity-30 pointer-events-none' style={{background: 'radial-gradient(circle at 40% 40%, var(--blue-light) 0%, var(--blue-medium) 60%, transparent 80%)'}} />
       <div className='relative z-10 w-full max-w-[520px] bg-[rgba(255,255,255,0.92)] backdrop-blur-xl rounded-3xl p-8 shadow-[0_24px_60px_rgba(44,44,44,0.07)] border border-[rgba(255,167,166,0.2)]'>
         <span className='text-[0.7rem] font-medium tracking-[0.1em] uppercase text-[var(--rose-medium)] block mb-2'>Private Session</span>
         <h1 className='font-cormorant text-[2.1rem] font-light text-[var(--ink)] leading-tight mb-2'>Schedule Your Appointment</h1>

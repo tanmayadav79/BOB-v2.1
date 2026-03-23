@@ -12,6 +12,7 @@ import Chatbot from './pages/Chatbot'
 import Dashboard from './pages/Dashboard'
 import UserProfile from './pages/UserProfile'
 import DASS21 from './pages/DASS21'
+import Test from './pages/Test'
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/dass21' element={<DASS21 />} />
+          <Route path='/test' element={<Test />} />
         </Routes>
       </div>
       <Footer />

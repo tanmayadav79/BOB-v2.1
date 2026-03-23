@@ -184,9 +184,6 @@ export default function UserProfile() {
 
   return (
     <div className='min-h-[calc(100vh-64px)] relative overflow-hidden'>
-      <div className='blob-primary fixed right-[-8%] top-[5%] w-[440px] h-[440px] rounded-full opacity-25 pointer-events-none' style={{ background: 'radial-gradient(circle at 40% 40%, var(--blue-light) 0%, var(--blue-medium) 60%, transparent 80%)' }} />
-      <div className='blob-secondary fixed left-[-5%] bottom-[8%] w-[280px] h-[280px] rounded-full opacity-40 pointer-events-none' style={{ background: 'radial-gradient(circle, var(--rose-light) 0%, transparent 70%)' }} />
-
       <div className='bg-[var(--ink)] px-6 sm:px-10 lg:px-16 pt-10 pb-16 relative z-10'>
         <div className='max-w-3xl mx-auto flex items-start gap-5 flex-wrap'>
           <div className='w-[72px] h-[72px] rounded-full bg-[var(--rose-medium)] flex items-center justify-center font-cormorant text-[1.8rem] font-normal text-white shrink-0 border-[3px] border-[rgba(255,255,255,0.12)]'>{loading ? '...' : initials}</div>
