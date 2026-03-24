@@ -7,12 +7,12 @@ import Login from './pages/Login'
 import { Appointment } from './pages/Appointment'
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
-import { Psych } from './pages/Psych'
 import Chatbot from './pages/Chatbot'
 import Dashboard from './pages/Dashboard'
 import UserProfile from './pages/UserProfile'
 import DASS21 from './pages/DASS21'
 import Test from './pages/Test'
+import Wellness from './pages/Wellness'
 
 function App() {
   return (
@@ -25,12 +25,12 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/appointment' element={<Appointment />} />
-          <Route path='/resources' element={<Psych />} />
           <Route path='/chat' element={<Chatbot />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/profile' element={<UserProfile />} />
           <Route path='/dass21' element={<DASS21 />} />
           <Route path='/test' element={<Test />} />
+          <Route path='/wellness' element={<Wellness />} />
         </Routes>
       </div>
       <Footer />

@@ -21,7 +21,7 @@ export const Banner = () => {
           </p>
           <div className='mt-8 flex gap-3 flex-wrap'>
             <a href='/test'><button className='bg-[var(--ink)] text-white text-[0.88rem] font-medium px-7 py-3 rounded-full border-none cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(44,44,44,0.2)] transition-all duration-200'>Take a Test</button></a>
-            <a href='/resources'><button className='bg-transparent text-[var(--ink)] text-[0.88rem] font-normal px-7 py-3 rounded-full border-[1.5px] border-[rgba(44,44,44,0.2)] cursor-pointer hover:border-[var(--rose-medium)] hover:text-[var(--rose-medium)] transition-all duration-200'>Explore Resources</button></a>
+            <a href='/wellness'><button className='bg-transparent text-[var(--ink)] text-[0.88rem] font-normal px-7 py-3 rounded-full border-[1.5px] border-[rgba(44,44,44,0.2)] cursor-pointer hover:border-[var(--rose-medium)] hover:text-[var(--rose-medium)] transition-all duration-200'>Quite Space</button></a>
           </div>
         </div>
 
