@@ -13,6 +13,7 @@ import UserProfile from './pages/UserProfile'
 import DASS21 from './pages/DASS21'
 import Test from './pages/Test'
 import Wellness from './pages/Wellness'
+import RouteGuard from './components/RouteGuard'
 
 function App() {
   return (
@@ -24,11 +25,11 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/appointment' element={<Appointment />} />
+          <Route path='/appointment' element={<RouteGuard requireDass><Appointment /></RouteGuard>} />
           <Route path='/chat' element={<Chatbot />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/profile' element={<UserProfile />} />
-          <Route path='/dass21' element={<DASS21 />} />
+          <Route path='/dashboard' element={<RouteGuard><Dashboard /></RouteGuard>} />
+          <Route path='/profile' element={<UserProfile/>} />
+          <Route path='/dass21' element={<RouteGuard><DASS21 /></RouteGuard>} />
           <Route path='/test' element={<Test />} />
           <Route path='/wellness' element={<Wellness />} />
         </Routes>

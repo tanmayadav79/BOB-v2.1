@@ -49,7 +49,7 @@ export default function Navbar() {
   const links = [
     { label: 'Home', href: '/' },
     { label: 'Wellness', href: '/wellness' },
-    { label: 'Self-Test', href: '/dass21' },
+    { label: 'Self-Test', href: '/test' },
     { label: 'Appointment', href: '/appointment' },
     { label: 'Chat', href: '/chat' },
     ...(counsellor ? [{ label: 'Dashboard', href: '/dashboard' }] : []),

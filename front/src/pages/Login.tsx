@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
 const Login = () => {
   const [state, setState] = useState('Login')
   const colleges = ['Ajeenkya DY Patil University']
   const navigate = useNavigate()
+  const [searchParams] = useSearchParams()
   const [user, setUser] = useState({ username: '', mobile: '', college: '', password: '', confirmPassword: '' })
+  const redirectTo = searchParams.get('redirect') || '/'
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -15,12 +17,12 @@ const Login = () => {
     try {
       if (state === 'Sign Up') {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ username: user.username, mobileNo: user.mobile, college: user.college, password: user.password }) })
-        if (res.ok) { toast.success('User registered, please log in.'); navigate('/login') }
+        if (res.ok) { toast.success('User registered, please log in.'); navigate(`/login?redirect=${encodeURIComponent(redirectTo)}`) }
         else { const { message } = await res.json(); toast.error(message) }
       }
       if (state === 'Login') {
         const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, credentials: 'include', body: JSON.stringify({ username: user.username, password: user.password }) })
-        if (res.ok) { toast.success('Logged in successfully.'); navigate('/'); setTimeout(() => window.location.reload(), 600) }
+        if (res.ok) { toast.success('Logged in successfully.'); navigate(redirectTo); setTimeout(() => window.location.reload(), 600) }
         else { const { message } = await res.json(); toast.error(message) }
       }
     } catch (err) { toast.error(err instanceof Error ? err.message : 'An error occurred') }

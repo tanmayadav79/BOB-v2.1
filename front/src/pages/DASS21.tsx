@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ChevronRight, RotateCcw, CheckCircle } from 'lucide-react'
 import { toast } from 'react-toastify'
+import { useSearchParams } from 'react-router-dom'
 
 type Category = 's' | 'a' | 'd'
 
@@ -114,11 +115,14 @@ function ResultCard({ cat, rawScore }: { cat: Category; rawScore: number }) {
 type Screen = 'intro' | 'test' | 'results'
 
 export default function DASS21() {
+  const [searchParams] = useSearchParams()
   const [screen, setScreen] = useState<Screen>('intro')
   const [answers, setAnswers] = useState<Record<number, number>>({})
   const [attempted, setAttempted] = useState(false)
   const [saving, setSaving] = useState(false)
   const [saved, setSaved] = useState(false)
+  const redirectTo = searchParams.get('redirect') || '/appointment'
+  const requiredForBooking = searchParams.get('required') === '1'
 
   const answered = Object.keys(answers).length
   const total = QUESTIONS.length
@@ -169,6 +173,7 @@ export default function DASS21() {
         <span className='text-[0.7rem] font-medium tracking-[0.1em] uppercase text-[var(--rose-medium)] block mb-2'>Mental Wellness Assessment</span>
         <h1 className='font-cormorant text-[clamp(2rem,4vw,2.8rem)] font-light text-[var(--ink)] leading-tight mb-3'>DASS-21 Test</h1>
         <p className='text-[0.9rem] text-[var(--ink-muted)] font-light leading-relaxed mb-6'>This test takes about 3–5 minutes. Please answer all questions to the best of your ability.</p>
+        {requiredForBooking && <div className='mb-5 rounded-[16px] border border-[rgba(255,167,166,0.35)] bg-[var(--rose-whisper)] px-4 py-3 text-[0.84rem] text-[var(--ink)]'>Please complete this test before booking an appointment.</div>}
         <button onClick={() => setScreen('test')} className='w-full bg-[var(--ink)] text-white text-[0.9rem] font-medium py-4 rounded-full border-none cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_12px_30px_rgba(44,44,44,0.2)] transition-all duration-200 flex items-center justify-center gap-2'>Start Assessment <ChevronRight size={16} /></button>
       </div>
     </div>
@@ -241,7 +246,7 @@ export default function DASS21() {
               <h3 className='font-cormorant text-[1.5rem] font-light text-white leading-tight mb-1'>Consider speaking to someone</h3>
               <p className='text-[0.84rem] text-[rgba(255,255,255,0.5)] font-light leading-relaxed'>Your results suggest you may benefit from a conversation with one of our counsellors.</p>
             </div>
-            <a href='/appointment' className='shrink-0 bg-[var(--rose-medium)] text-white text-[0.85rem] font-medium px-6 py-3 rounded-full no-underline hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(255,167,166,0.4)] transition-all duration-200'>Book a Session</a>
+            <a href={redirectTo} className='shrink-0 bg-[var(--rose-medium)] text-white text-[0.85rem] font-medium px-6 py-3 rounded-full no-underline hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(255,167,166,0.4)] transition-all duration-200'>Book a Session</a>
           </div>
         )}
 

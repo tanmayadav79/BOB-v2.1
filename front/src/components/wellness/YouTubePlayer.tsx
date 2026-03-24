@@ -4,54 +4,12 @@ import { Play, ExternalLink } from 'lucide-react'
 interface Video { id: string; title: string; channel: string; duration: string; tag: string; tagColor: string }
 
 const VIDEOS: Video[] = [
-  {
-    id: 'dknTQktH5Z0',
-    title: 'Understanding Anxiety',
-    channel: 'YouTube',
-    duration: '—',
-    tag: 'Anxiety',
-    tagColor: 'bg-[var(--rose-light)] text-[var(--rose-medium)]',
-  },
-  {
-    id: 'Ii53BtHLnGk',
-    title: 'Understanding Depression',
-    channel: 'YouTube',
-    duration: '—',
-    tag: 'Depression',
-    tagColor: 'bg-[var(--blue-light)] text-[#3b6cb7]',
-  },
-  {
-    id: 'Mo1A45ShcMo',
-    title: 'Understanding Stress',
-    channel: 'YouTube',
-    duration: '—',
-    tag: 'Stress',
-    tagColor: 'bg-[var(--rose-soft)] text-[#b05a00]',
-  },
-  {
-    id: 'Q9yKaI0vLJs',
-    title: 'Understanding OCD',
-    channel: 'YouTube',
-    duration: '—',
-    tag: 'OCD',
-    tagColor: 'bg-[var(--rose-light)] text-[var(--rose-medium)]',
-  },
-  {
-    id: '-NVoikSV-cQ',
-    title: 'Understanding ADHD',
-    channel: 'YouTube',
-    duration: '—',
-    tag: 'ADHD',
-    tagColor: 'bg-[var(--blue-light)] text-[#3b6cb7]',
-  },
-  {
-    id: 'F45Al_62Lz4',
-    title: 'Understanding Sleep Disorders',
-    channel: 'YouTube',
-    duration: '—',
-    tag: 'Sleep',
-    tagColor: 'bg-[var(--rose-soft)] text-[#b05a00]',
-  },
+  { id: 'dknTQktH5Z0', title: 'Anxiety ', channel: 'YouTube', duration: '—', tag: 'Anxiety', tagColor: 'bg-[var(--rose-light)] text-[var(--rose-medium)]' },
+  { id: 'Ii53BtHLnGk', title: 'Depression ', channel: 'YouTube', duration: '—', tag: 'Depression', tagColor: 'bg-[var(--blue-light)] text-[#3b6cb7]' },
+  { id: 'Mo1A45ShcMo', title: 'Stress ', channel: 'YouTube', duration: '—', tag: 'Stress', tagColor: 'bg-[var(--rose-soft)] text-[#b05a00]' },
+  { id: 'Q9yKaI0vLJs', title: 'OCD ', channel: 'YouTube', duration: '—', tag: 'OCD', tagColor: 'bg-[var(--rose-light)] text-[var(--rose-medium)]' },
+  { id: '-NVoikSV-cQ', title: 'ADHD ', channel: 'YouTube', duration: '—', tag: 'ADHD', tagColor: 'bg-[var(--blue-light)] text-[#3b6cb7]' },
+  { id: 'F45Al_62Lz4', title: 'Sleep Disorders ', channel: 'YouTube', duration: '—', tag: 'Sleep', tagColor: 'bg-[var(--rose-soft)] text-[#b05a00]' },
 ]
 
 function VideoCard({ video, isPlaying, onPlay }: { video: Video; isPlaying: boolean; onPlay: () => void }) {
@@ -89,9 +47,9 @@ function VideoCard({ video, isPlaying, onPlay }: { video: Video; isPlaying: bool
 
 export default function YouTubePlayer() {
   const [playing, setPlaying] = useState<string | null>(null)
-  const [filter, setFilter]   = useState('All')
+  const [filter, setFilter] = useState('All')
 
-  const tags  = ['All', ...Array.from(new Set(VIDEOS.map(v => v.tag)))]
+  const tags = ['All', ...Array.from(new Set(VIDEOS.map(v => v.tag)))]
   const shown = filter === 'All' ? VIDEOS : VIDEOS.filter(v => v.tag === filter)
 
   return (
