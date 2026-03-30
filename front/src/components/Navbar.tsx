@@ -48,12 +48,11 @@ export default function Navbar() {
 
   const links = [
     { label: 'Home', href: '/' },
-    { label: 'Wellness', href: '/wellness' },
-    { label: 'Self-Test', href: '/test' },
+    { label: 'mindfulness', href: '/mindfulness' },
     { label: 'Appointment', href: '/appointment' },
     { label: 'Chat', href: '/chat' },
     ...(counsellor ? [{ label: 'Dashboard', href: '/dashboard' }] : []),
-    ...(authenticated ? [{ label: 'Profile', href: '/profile' }] : []),
+    ...(authenticated && !counsellor ? [{ label: 'Profile', href: '/profile' }] : []),
   ]
 
   const isActive = (href: string) => currentPath === href
@@ -63,7 +62,7 @@ export default function Navbar() {
       <div className='flex items-center justify-between px-6 sm:px-10 h-16'>
 
         <a href='/' className='font-cormorant text-[1.35rem] font-normal tracking-wide text-[var(--ink)] no-underline shrink-0'>
-          Balance Over <span className='text-[var(--rose-medium)]'>Breakdown</span>
+          Balance Over <span className='text-[var(--rose-medium)]'>Blues</span>
         </a>
 
         <ul className='hidden md:flex items-center gap-7 list-none m-0 p-0'>

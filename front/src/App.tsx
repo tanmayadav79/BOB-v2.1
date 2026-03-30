@@ -11,7 +11,6 @@ import Chatbot from './pages/Chatbot'
 import Dashboard from './pages/Dashboard'
 import UserProfile from './pages/UserProfile'
 import DASS21 from './pages/DASS21'
-import Test from './pages/Test'
 import Wellness from './pages/Wellness'
 import RouteGuard from './components/RouteGuard'
 
@@ -30,8 +29,7 @@ function App() {
           <Route path='/dashboard' element={<RouteGuard><Dashboard /></RouteGuard>} />
           <Route path='/profile' element={<UserProfile/>} />
           <Route path='/dass21' element={<RouteGuard><DASS21 /></RouteGuard>} />
-          <Route path='/test' element={<Test />} />
-          <Route path='/wellness' element={<Wellness />} />
+          <Route path='/mindfulness' element={<Wellness />} />
         </Routes>
       </div>
       <Footer />

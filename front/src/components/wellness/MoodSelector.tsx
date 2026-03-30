@@ -1,56 +1,59 @@
 import { useState } from 'react'
-import { Music } from 'lucide-react'
 
 type MoodKey = 'anxious' | 'sad' | 'stressed' | 'neutral' | 'calm' | 'tired'
 
-interface Mood { key: MoodKey; emoji: string; label: string; color: string; border: string; activeBg: string }
-interface Rec { primary: { label: string; desc: string; action: string; href?: string; scrollTo?: string }; secondary: { label: string; scrollTo?: string; href?: string }[]; music: string }
+interface Mood {
+  key: MoodKey
+  emoji: string
+  label: string
+  color: string
+  border: string
+  activeBg: string
+}
+
+interface Rec {
+  primary: { label: string; desc: string; action: string; href?: string; scrollTo?: string }
+  secondary: { label: string; scrollTo?: string; href?: string }[]
+}
 
 const MOODS: Mood[] = [
-  { key: 'anxious',  emoji: '😟', label: 'Anxious',  color: 'text-[var(--rose-medium)]', border: 'border-[rgba(255,167,166,0.4)]', activeBg: 'bg-[var(--rose-light)]' },
-  { key: 'sad',      emoji: '😔', label: 'Low / Sad', color: 'text-[#3b6cb7]',            border: 'border-[rgba(176,199,227,0.5)]', activeBg: 'bg-[var(--blue-light)]' },
-  { key: 'stressed', emoji: '😠', label: 'Stressed',  color: 'text-[#b05a00]',            border: 'border-[rgba(255,220,180,0.6)]', activeBg: 'bg-[var(--rose-soft)]' },
-  { key: 'neutral',  emoji: '😐', label: 'Neutral',   color: 'text-[var(--ink-muted)]',   border: 'border-[rgba(44,44,44,0.14)]',   activeBg: 'bg-[rgba(44,44,44,0.06)]' },
-  { key: 'calm',     emoji: '🙂', label: 'Calm',      color: 'text-green-600',             border: 'border-green-200',               activeBg: 'bg-green-50' },
-  { key: 'tired',    emoji: '😵', label: 'Tired',     color: 'text-[#6b5b9e]',            border: 'border-[rgba(176,162,210,0.4)]', activeBg: 'bg-[rgba(176,162,210,0.12)]' },
+  { key: 'anxious', emoji: '😟', label: 'Anxious', color: 'text-[var(--rose-medium)]', border: 'border-[rgba(255,167,166,0.4)]', activeBg: 'bg-[var(--rose-light)]' },
+  { key: 'sad', emoji: '😔', label: 'Low / Sad', color: 'text-[#3b6cb7]', border: 'border-[rgba(176,199,227,0.5)]', activeBg: 'bg-[var(--blue-light)]' },
+  { key: 'stressed', emoji: '😠', label: 'Stressed', color: 'text-[#b05a00]', border: 'border-[rgba(255,220,180,0.6)]', activeBg: 'bg-[var(--rose-soft)]' },
+  { key: 'neutral', emoji: '😐', label: 'Neutral', color: 'text-[var(--ink-muted)]', border: 'border-[rgba(44,44,44,0.14)]', activeBg: 'bg-[rgba(44,44,44,0.06)]' },
+  { key: 'calm', emoji: '🙂', label: 'Calm', color: 'text-green-600', border: 'border-green-200', activeBg: 'bg-green-50' },
+  { key: 'tired', emoji: '😵', label: 'Tired', color: 'text-[#6b5b9e]', border: 'border-[rgba(176,162,210,0.4)]', activeBg: 'bg-[rgba(176,162,210,0.12)]' },
 ]
 
 const RECS: Record<MoodKey, Rec> = {
   anxious: {
-    primary:   { label: 'Try 4-7-8 Breathing', desc: 'This breathing pattern is clinically shown to reduce acute anxiety within minutes.', action: 'Start Breathing', scrollTo: 'breathe' },
+    primary: { label: 'Try 4-7-8 Breathing', desc: 'This breathing pattern is clinically shown to reduce acute anxiety within minutes.', action: 'Start Breathing', scrollTo: 'breathe' },
     secondary: [{ label: 'Progressive Muscle Relaxation', scrollTo: 'winddown' }, { label: 'Watch a calm meditation', scrollTo: 'videos' }],
-    music: 'Put on something slow and instrumental — no lyrics. Rain sounds or lo-fi work well.',
   },
   sad: {
-    primary:   { label: 'Write & Release', desc: 'Getting thoughts out of your head and onto the page creates distance from difficult feelings.', action: 'Go to Wind-Down', scrollTo: 'winddown' },
+    primary: { label: 'Write & Release', desc: 'Getting thoughts out of your head and onto the page creates distance from difficult feelings.', action: 'Go to Wind-Down', scrollTo: 'winddown' },
     secondary: [{ label: 'Try a breathing session', scrollTo: 'breathe' }, { label: 'Talk to BOB Bot', href: '/chat' }],
-    music: 'Try something that matches your mood first — sad music is not always the wrong choice. Then gently shift toward something warmer.',
   },
   stressed: {
-    primary:   { label: 'Neck & Shoulder Stretches', desc: 'Stress lives in the body. Releasing physical tension first makes everything else easier.', action: 'Start Exercise', scrollTo: 'winddown' },
+    primary: { label: 'Neck & Shoulder Stretches', desc: 'Stress lives in the body. Releasing physical tension first makes everything else easier.', action: 'Start Exercise', scrollTo: 'winddown' },
     secondary: [{ label: '4-4-6 Breathing (calm)', scrollTo: 'breathe' }, { label: 'Forward Fold', scrollTo: 'winddown' }],
-    music: 'Binaural beats at 40Hz or classical music with a slow tempo can reduce cortisol measurably.',
   },
   neutral: {
-    primary:   { label: 'Box Breathing — Stay centred', desc: 'Use this moment of stability to build a small positive habit. Even 2 minutes has an effect.', action: 'Start Box Breathing', scrollTo: 'breathe' },
+    primary: { label: 'Box Breathing - Stay centred', desc: 'Use this moment of stability to build a small positive habit. Even 2 minutes has an effect.', action: 'Start Box Breathing', scrollTo: 'breathe' },
     secondary: [{ label: 'Browse calming videos', scrollTo: 'videos' }, { label: 'Try a wind-down exercise', scrollTo: 'winddown' }],
-    music: 'Ambient or nature sounds are a good background for neutral moments — they support focus without distraction.',
   },
   calm: {
-    primary:   { label: 'Deepen with a Meditation Video', desc: 'You are already in a great state. Use it to build mindfulness that lasts.', action: 'Watch a Video', scrollTo: 'videos' },
+    primary: { label: 'Deepen with a Meditation Video', desc: 'You are already in a great state. Use it to build mindfulness that lasts.', action: 'Watch a Video', scrollTo: 'videos' },
     secondary: [{ label: 'Forward Fold & Breathing', scrollTo: 'winddown' }, { label: 'Log your mood', href: '/profile' }],
-    music: 'Whatever makes you feel most yourself right now. This is a good moment for music you love.',
   },
   tired: {
-    primary:   { label: '4-7-8 Breathing for Sleep', desc: 'Slow the nervous system down. This pattern was designed specifically for winding down before rest.', action: 'Begin Breathing', scrollTo: 'breathe' },
+    primary: { label: '4-7-8 Breathing for Sleep', desc: 'Slow the nervous system down. This pattern was designed specifically for winding down before rest.', action: 'Begin Breathing', scrollTo: 'breathe' },
     secondary: [{ label: 'Sleep Prep exercises', scrollTo: 'winddown' }, { label: 'Watch a body-scan video', scrollTo: 'videos' }],
-    music: 'Keep it very quiet and slow — 432Hz music or brown noise are ideal for easing into sleep.',
   },
 }
 
 export default function MoodSelector({ onScrollTo }: { onScrollTo: (id: string) => void }) {
   const [selected, setSelected] = useState<MoodKey | null>(null)
-  const [musicOpen, setMusicOpen] = useState(false)
 
   const rec = selected ? RECS[selected] : null
   const moodObj = selected ? MOODS.find(m => m.key === selected)! : null
@@ -61,20 +64,17 @@ export default function MoodSelector({ onScrollTo }: { onScrollTo: (id: string) 
       <h3 className='font-cormorant text-[1.7rem] font-light text-[var(--ink)] leading-tight mb-1'>How are you feeling right now?</h3>
       <p className='text-[0.82rem] text-[var(--ink-muted)] font-light mb-6'>Select your mood and we will suggest the right tool for this moment.</p>
 
-      {/* Mood grid */}
       <div className='grid grid-cols-3 sm:grid-cols-6 gap-2.5 mb-6'>
         {MOODS.map(m => (
-          <button key={m.key} onClick={() => { setSelected(m.key); setMusicOpen(false) }} className={`flex flex-col items-center gap-2 py-4 px-2 rounded-[16px] border-[1.5px] cursor-pointer transition-all duration-200 ${selected === m.key ? `${m.activeBg} ${m.border} shadow-[0_4px_16px_rgba(44,44,44,0.08)]` : 'bg-[var(--rose-whisper)] border-transparent hover:border-[rgba(255,167,166,0.3)] hover:bg-white hover:shadow-[0_2px_8px_rgba(44,44,44,0.06)]'}`}>
+          <button key={m.key} onClick={() => setSelected(m.key)} className={`flex flex-col items-center gap-2 py-4 px-2 rounded-[16px] border-[1.5px] cursor-pointer transition-all duration-200 ${selected === m.key ? `${m.activeBg} ${m.border} shadow-[0_4px_16px_rgba(44,44,44,0.08)]` : 'bg-[var(--rose-whisper)] border-transparent hover:border-[rgba(255,167,166,0.3)] hover:bg-white hover:shadow-[0_2px_8px_rgba(44,44,44,0.06)]'}`}>
             <span className='text-[1.8rem] leading-none'>{m.emoji}</span>
             <span className={`text-[0.68rem] font-medium text-center leading-tight ${selected === m.key ? m.color : 'text-[var(--ink-muted)]'}`}>{m.label}</span>
           </button>
         ))}
       </div>
 
-      {/* Recommendation panel */}
       {rec && moodObj && (
         <div className='flex flex-col gap-3 animate-[fadeIn_0.3s_ease]' style={{ animation: 'fadeIn 0.25s ease both' }}>
-          {/* Primary */}
           <div className={`${moodObj.activeBg} rounded-[18px] p-5 border-[1.5px] ${moodObj.border}`}>
             <div className='flex items-start justify-between gap-3 mb-1'>
               <p className='text-[0.72rem] font-medium tracking-[0.08em] uppercase text-[var(--ink-muted)]'>Recommended for you</p>
@@ -87,7 +87,6 @@ export default function MoodSelector({ onScrollTo }: { onScrollTo: (id: string) 
             }
           </div>
 
-          {/* Secondary options */}
           <div className='grid grid-cols-1 sm:grid-cols-2 gap-2.5'>
             {rec.secondary.map((s, i) => (
               <button key={i} onClick={() => s.scrollTo ? onScrollTo(s.scrollTo) : (window.location.href = s.href!)} className='flex items-center justify-between gap-3 px-4 py-3.5 rounded-[14px] bg-[var(--rose-whisper)] border-[1.5px] border-transparent hover:border-[rgba(255,167,166,0.3)] hover:bg-white hover:shadow-[0_2px_10px_rgba(44,44,44,0.06)] transition-all duration-200 text-left cursor-pointer'>
@@ -96,19 +95,6 @@ export default function MoodSelector({ onScrollTo }: { onScrollTo: (id: string) 
               </button>
             ))}
           </div>
-
-          {/* Music toggle */}
-          <button onClick={() => setMusicOpen(o => !o)} className='flex items-center gap-2 px-4 py-3 rounded-[14px] bg-[rgba(44,44,44,0.04)] border-[1.5px] border-transparent hover:border-[rgba(44,44,44,0.1)] hover:bg-[rgba(44,44,44,0.07)] transition-all duration-200 text-left cursor-pointer w-full'>
-            <Music size={14} className='text-[var(--ink-muted)] shrink-0' />
-            <span className='text-[0.82rem] font-medium text-[var(--ink)] flex-1'>Music suggestion</span>
-            <span className='text-[0.72rem] text-[var(--ink-muted)]'>{musicOpen ? '▲' : '▼'}</span>
-          </button>
-
-          {musicOpen && (
-            <div className='px-4 py-3 rounded-[12px] bg-[rgba(44,44,44,0.04)] border border-[rgba(44,44,44,0.07)]'>
-              <p className='text-[0.82rem] text-[var(--ink-muted)] font-light leading-relaxed'>{rec.music}</p>
-            </div>
-          )}
         </div>
       )}
 

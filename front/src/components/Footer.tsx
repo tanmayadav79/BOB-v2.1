@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className='bg-[var(--ink)] px-6 sm:px-10 lg:px-16 pt-12 pb-6'>
       <div className='grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8'>
         <div>
-          <div className='font-cormorant text-[1.35rem] font-normal text-white tracking-wide mb-3'>Balance Over <span className='text-[var(--rose-medium)]'>Breakdown</span></div>
+          <div className='font-cormorant text-[1.35rem] font-normal text-white tracking-wide mb-3'>Balance Over <span className='text-[var(--rose-medium)]'>Blues</span></div>
           <p className='text-[0.84rem] leading-relaxed text-[rgba(255,255,255,0.45)] max-w-[280px] mb-4'>Mental wellness support for college students — compassionate, evidence-based, and always here.</p>
           <a href='https://discord.gg/X7dcGHh2ez' target='_blank' rel='noopener noreferrer' className='inline-flex items-center gap-2 text-[0.82rem] text-[rgba(255,255,255,0.45)] no-underline hover:text-[var(--rose-medium)] transition-colors duration-200'><FaDiscord size={17} />Join our Discord</a>
         </div>
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
       </div>
       <div className='border-t border-[rgba(255,255,255,0.08)] pt-5 flex flex-wrap justify-between items-center gap-3'>
-        <span className='text-[0.76rem] text-[rgba(255,255,255,0.3)]'>© 2025 Balance Over Breakdown. All rights reserved.</span>
+        <span className='text-[0.76rem] text-[rgba(255,255,255,0.3)]'>© 2025 Balance Over Blues. All rights reserved.</span>
         <span className='text-[0.76rem] text-[var(--rose-medium)]'>Made with care for your wellbeing</span>
       </div>
     </footer>
