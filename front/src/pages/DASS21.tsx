@@ -252,7 +252,7 @@ export default function DASS21() {
 
         <div className='flex flex-col sm:flex-row gap-3'>
           <button onClick={handleRetake} className='flex-1 flex items-center justify-center gap-2 py-3.5 rounded-full bg-white text-[var(--ink)] text-[0.88rem] font-medium border-[1.5px] border-[rgba(44,44,44,0.14)] cursor-pointer hover:border-[var(--rose-medium)] hover:text-[var(--rose-medium)] transition-all duration-200'><RotateCcw size={14} />Retake Test</button>
-          <a href='/resources' className='flex-1 text-center py-3.5 rounded-full bg-[var(--blue-light)] text-[var(--ink)] text-[0.88rem] font-medium no-underline hover:bg-[var(--blue-medium)] transition-colors duration-200'>Browse Resources</a>
+          <a href='/mindfulness' className='flex-1 text-center py-3.5 rounded-full bg-[var(--blue-light)] text-[var(--ink)] text-[0.88rem] font-medium no-underline hover:bg-[var(--blue-medium)] transition-colors duration-200'>Find more</a>
           <a href='/chat' className='flex-1 text-center py-3.5 rounded-full bg-[var(--ink)] text-white text-[0.88rem] font-medium no-underline hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(44,44,44,0.18)] transition-all duration-200'>Talk to BOB Bot</a>
         </div>
 

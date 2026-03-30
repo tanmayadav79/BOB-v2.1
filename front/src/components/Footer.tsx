@@ -12,7 +12,7 @@ export default function Footer() {
         <div>
           <h4 className='text-[0.7rem] font-medium tracking-[0.1em] uppercase text-white mb-4'>Platform</h4>
           <ul className='list-none p-0 m-0 flex flex-col gap-2.5'>
-            {['Home', 'Resources', 'Appointment', 'Chat'].map(item => (
+            {['Home', 'Mindfulness', 'Appointment', 'Chat'].map(item => (
               <li key={item}><a href={item === 'Home' ? '/' : `/${item.toLowerCase()}`} className='text-[0.84rem] text-[rgba(255,255,255,0.45)] no-underline hover:text-[var(--rose-medium)] transition-colors duration-200'>{item}</a></li>
             ))}
           </ul>
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
       </div>
       <div className='border-t border-[rgba(255,255,255,0.08)] pt-5 flex flex-wrap justify-between items-center gap-3'>
-        <span className='text-[0.76rem] text-[rgba(255,255,255,0.3)]'>© 2025 Balance Over Blues. All rights reserved.</span>
+        <span className='text-[0.76rem] text-[rgba(255,255,255,0.3)]'>© 2026 Balance Over Blues. All rights reserved.</span>
         <span className='text-[0.76rem] text-[var(--rose-medium)]'>Made with care for your wellbeing</span>
       </div>
     </footer>
