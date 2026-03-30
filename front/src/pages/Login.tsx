@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { FcGoogle } from 'react-icons/fc'
 import { toast } from 'react-toastify'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
@@ -54,7 +53,6 @@ const Login = () => {
           <span className='px-3 text-[var(--ink-muted)] text-[0.78rem]'>or</span>
           <div className='flex-1 border-t border-[rgba(44,44,44,0.1)]' />
         </div>
-        <div className='flex justify-center'><button type='button' className='bg-transparent border-none cursor-pointer flex items-center'><FcGoogle size={26} /></button></div>
         <p className='text-center text-[0.82rem] text-[var(--ink-muted)] mt-1'>
           {state === 'Sign Up' ? 'Already have an account? ' : "Don't have an account? "}
           <button type='button' onClick={() => setState(state === 'Sign Up' ? 'Login' : 'Sign Up')} className='bg-none border-none text-[var(--rose-medium)] font-medium cursor-pointer text-[0.82rem] p-0'>{state === 'Sign Up' ? 'Login' : 'Sign Up'}</button>
